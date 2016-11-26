@@ -1,0 +1,9 @@
+{
+  "name": "front-end-boilerplate",
+  "description": "A boilerplate for front end projects",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2"
+  }
+}
