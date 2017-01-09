@@ -2,7 +2,8 @@ const gulp         = require('gulp'),
       sass         = require('gulp-sass'),
       htmlInjector = require('bs-html-injector'),
       browserSync  = require('browser-sync').create()
-      rollup       = require('rollup');
+      rollup       = require('rollup'),
+      buble        = require('rollup-plugin-buble');
 
 src = {
   html: 'src/*.html',
@@ -45,15 +46,14 @@ gulp.task('sass', function() {
     .pipe(browserSync.reload({ stream: true }));
 });
 
-// Convert ES6 Modules using rollup
+// Convert ES6 Modules using Rollup & Bublè
 gulp.task('rollup', function() {
   var entry   = 'src/js/index.js';
   var dest    = dist.js;
-  // var plugins = [
-  //   buble(),
-  // ];
-  // rollup.rollup({ entry, plugins }).then(bundle => {
-  rollup.rollup({ entry }).then(bundle => {
+  var plugins = [
+    buble(),
+  ];
+  rollup.rollup({ entry, plugins }).then(bundle => {
     bundle.write({
        format: 'es',
        dest: dest,

@@ -6,6 +6,7 @@
     "bs-html-injector": "^3.0.3",
     "gulp": "^3.9.1",
     "gulp-sass": "^2.3.2",
-    "rollup": "^0.41.1"
+    "rollup": "^0.41.1",
+    "rollup-plugin-buble": "^0.15.0"
   }
 }
