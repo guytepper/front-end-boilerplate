@@ -5,6 +5,7 @@
     "browser-sync": "^2.18.2",
     "bs-html-injector": "^3.0.3",
     "gulp": "^3.9.1",
-    "gulp-sass": "^2.3.2"
+    "gulp-sass": "^2.3.2",
+    "rollup": "^0.41.1"
   }
 }
