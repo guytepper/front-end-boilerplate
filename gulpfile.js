@@ -8,17 +8,19 @@ const gulp         = require('gulp'),
 src = {
   html: 'src/*.html',
   scss: 'src/scss/*.scss',
+  images: 'src/images/*.jpg',
   js: 'src/js/*.js'
 }
 
 dist = {
   html: 'dist/',
   css:  'dist/css/',
+  images: 'dist/images',
   js:   'dist/js/index.js'
 }
 
 // Static Server + watching scss/html files
-gulp.task('serve', ['distHTML', 'rollup', 'sass'], function() {
+gulp.task('serve', ['distHTML', 'distImages', 'rollup', 'sass'], function() {
   browserSync.use(htmlInjector, {
         files: "dist/*.html"
   });
@@ -28,6 +30,7 @@ gulp.task('serve', ['distHTML', 'rollup', 'sass'], function() {
   });
 
   gulp.watch(src.html, ['distHTML']);
+  gulp.watch(src.images, ['distImages']);
   gulp.watch(src.scss, ['sass']);
   gulp.watch(src.js,   ['rollup']).on('change', browserSync.reload);
 });
@@ -36,6 +39,11 @@ gulp.task('serve', ['distHTML', 'rollup', 'sass'], function() {
 gulp.task('distHTML', function() {
   return gulp.src(src.html)
               .pipe(gulp.dest(dist.html))
+});
+
+gulp.task('distImages', function() {
+  return gulp.src(src.images)
+              .pipe(gulp.dest(dist.images))
 });
 
 // Compile sass into CSS
